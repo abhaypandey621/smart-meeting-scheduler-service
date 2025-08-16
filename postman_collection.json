@@ -1,0 +1,113 @@
+{
+	"info": {
+		"_postman_id": "7b3c9d2e-4f5a-6b7c-8d9e-0f1a2b3c4d5e",
+		"name": "Meeting Scheduler API",
+		"description": "Collection for testing the Smart Meeting Scheduler API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Schedule Meeting",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"participantIds\": [\"5518e59e-96f3-42d5-9e3b-6a4996f3ce82\", \"4839dced-1589-49c5-8eb0-99d98c72297e\", \"f9114f73-a547-4213-bb88-aaf030f90534\"],\n    \"durationMinutes\": 30,\n    \"timeRange\": {\n      \"start\": \"2025-09-01T09:00:00Z\",\n      \"end\": \"2025-09-05T17:00:00Z\"\n    },\n    \"title\": \"Project meeting\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/schedule",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "8080",
+					"path": ["schedule"]
+				},
+				"description": "Schedule a new meeting for Alice, Bob, and Charlie.\n\nNote: The 'title' field is optional. If not provided, the meeting will be assigned the default name 'New Meeting'."
+			},
+			"response": []
+		},
+		{
+			"name": "Alice's Calendar",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/users/5518e59e-96f3-42d5-9e3b-6a4996f3ce82/calendar?start=2024-09-01T00:00:00Z&end=2024-09-02T00:00:00Z",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "8080",
+					"path": ["users", "5518e59e-96f3-42d5-9e3b-6a4996f3ce82", "calendar"],
+					"query": [
+						{
+							"key": "start",
+							"value": "2024-09-01T00:00:00Z"
+						},
+						{
+							"key": "end",
+							"value": "2024-09-02T00:00:00Z"
+						}
+					]
+				},
+				"description": "Get Alice's calendar events."
+			},
+			"response": []
+		},
+		{
+			"name": "Bob's Calendar",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/users/4839dced-1589-49c5-8eb0-99d98c72297e/calendar?start=2024-09-01T00:00:00Z&end=2024-09-02T00:00:00Z",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "8080",
+					"path": ["users", "4839dced-1589-49c5-8eb0-99d98c72297e", "calendar"],
+					"query": [
+						{
+							"key": "start",
+							"value": "2024-09-01T00:00:00Z"
+						},
+						{
+							"key": "end",
+							"value": "2024-09-02T00:00:00Z"
+						}
+					]
+				},
+				"description": "Get Bob's calendar events."
+			},
+			"response": []
+		},
+		{
+			"name": "Charlie’s Calendar",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/users/f9114f73-a547-4213-bb88-aaf030f90534/calendar?start=2024-09-01T00:00:00Z&end=2024-09-02T00:00:00Z",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "8080",
+					"path": ["users", "f9114f73-a547-4213-bb88-aaf030f90534", "calendar"],
+					"query": [
+						{
+							"key": "start",
+							"value": "2024-09-01T00:00:00Z"
+						},
+						{
+							"key": "end",
+							"value": "2024-09-02T00:00:00Z"
+						}
+					]
+				},
+				"description": "Get Charlie's calendar events."
+			},
+			"response": []
+		}
+	]
+}
